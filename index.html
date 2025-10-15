@@ -9,7 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
-</head>
+</head><script>
+  const form = document.querySelector('form[name="contact"]');
+  const successMsg = form.querySelector('.success-message');
+
+  form.addEventListener('submit', function(e) {
+    // Let Netlify handle the submission, but show message after a short delay
+    setTimeout(() => {
+      successMsg.style.display = 'block';
+      form.reset();
+    }, 100);
+  });
+</script>
+
 <body>
   <main id="app" class="app">
     <!-- header -->
@@ -58,14 +70,27 @@
       <article id="Contact Us" class="panel" data-title="Contact Us">
         <h2>Contact Us</h2>
         <p>Your next big project starts here. Tell us about your goals—whether it's an AI site or custom software—and we'll handle the rest. We guarantee a thoughtful, personalized response from our team within 24 hours.</p>
-    
-<div class="iframe-wrapper" style="max-width:100%; border-radius:16px; overflow:hidden;">
-  <iframe 
-    src="https://reeqieric41.systeme.io/a9c47cf3"
-    style="width:100%; height:900px; border:none;"
-    loading="lazy"
-    title="Contact Form - Systeme.io">
-  </iframe>
+    <div class="form-wrapper" style="max-width:100%; border-radius:16px; overflow:hidden;">
+
+
+<form name="contact" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="contact">
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+  <button type="submit">Send</button>
+  
+  <p class="success-message" style="display:none;">Thanks for contacting us!</p>
+</form>
+
+
 </div>
       </article>
     </section>
@@ -75,6 +100,16 @@
     </footer>
   </main>
 
-  <script src="script.js"></script>
-</body>
+  <script src="script.js" defer></script>
+<script>
+  const form = document.querySelector('form[name="contact"]');
+  form.addEventListener('submit', () => {
+    setTimeout(() => {
+      form.querySelector('.success-message').style.display = 'block';
+      form.reset();
+    }, 100);
+  });
+</script>
+  <!-- Netlify form goes here -->
+  </body>
 </html>
