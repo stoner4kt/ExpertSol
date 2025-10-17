@@ -154,3 +154,18 @@ body{
   width: 100%;
   min-height: 900px;
   border: none;
+/* Responsive image styling */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 16px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.responsive-img:hover {
+  transform: scale(1.02);
+}
